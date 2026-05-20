@@ -1,0 +1,16 @@
+{
+  "name": "auto-logic-site",
+  "private": true,
+  "description": "אתר Auto Logic + שרת שליחת טופס דרך Resend",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2"
+  }
+}
