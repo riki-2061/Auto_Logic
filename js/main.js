@@ -107,7 +107,7 @@
 
   if (observer) {
     document
-      .querySelectorAll(".section__head, .about-card, .service-card, .process__step, .why__item, .integrations__icon")
+      .querySelectorAll(".section__head, .about-card, .service-card, .process__step, .why__item")
       .forEach(function (el) {
         el.classList.add("reveal");
         observer.observe(el);

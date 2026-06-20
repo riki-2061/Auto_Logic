@@ -815,29 +815,6 @@ a:hover {
   color: var(--gray-600);
 }
 
-/* Integrations */
-.integrations__cloud {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem 1.25rem;
-  padding: 2rem 1rem;
-}
-
-.integrations__icon {
-  font-size: 2.75rem;
-  padding: 1rem 1.15rem;
-  background: var(--white);
-  border-radius: 16px;
-  border: 1px solid rgba(0, 77, 90, 0.08);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.integrations__icon:hover {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: var(--shadow);
-}
-
 /* CTA band */
 .cta-band {
   padding: 2.5rem 0;
@@ -1006,7 +983,7 @@ a:hover {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  .footer__brand .footer__logo {
+  .footer__brand .footer__logo-wrap {
     margin-inline: auto;
   }
   .footer__nav {
@@ -1017,11 +994,19 @@ a:hover {
   }
 }
 
-/* לוגו בפוטר: בלי ריבוע לבן — מיזוג עם רקע הכהה (אם ב-PNG יש רקע לבן) */
+.footer__logo-wrap {
+  display: inline-block;
+  background: #fff;
+  border-radius: 10px;
+  padding: 6px 12px;
+  line-height: 0;
+}
+
 .footer__logo {
   display: block;
-  background: transparent;
-  mix-blend-mode: multiply;
+  width: auto;
+  max-height: 44px;
+  object-fit: contain;
 }
 
 .footer__brand p {
