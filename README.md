@@ -5,11 +5,11 @@
 ## הרצה עם טופס צור קשר (Resend)
 
 **חשוב:** מפתח ה-API של Resend **לא** נכנס ל־`index.html` או ל־`js/main.js` — כל מי שגולש באתר יוכל לראות אותו ולנצל אותו.  
-המפתח נשמר רק בקובץ **`.env`** בצד השרת (`server.js`).
+המפתח נשמר רק בקובץ **`.env`** בצד השרת (`scripts/dev-server.js` מקומית).
 
 ### שלבים
 
-1. בתיקיית הפרויקט, צרו קובץ בשם **`.env`** (ליד `server.js`).
+1. בתיקיית הפרויקט, צרו קובץ בשם **`.env`** (בשורש הפרויקט).
 2. העתיקו את התוכן מ־**`.env.example`** והדביקו ב־`.env`.
 3. הדביקו את המפתח שקיבלתם מ־Resend בשורה `RESEND_API_KEY=...` (מתחיל ב־`re_`).
 4. ב־`CONTACT_TO=` כתבו את המייל שאליו תרצו לקבל את הפניות.
@@ -40,12 +40,13 @@ python -m http.server 8080
 ## פריסה ב-Vercel
 
 1. חברי את הריפו [riki-2061/Auto_Logic](https://github.com/riki-2061/Auto_Logic) ב-Vercel.
-2. **Framework Preset:** Other — **Build Command** ריק, **Output Directory** ריק.
-3. ב-**Settings → Environment Variables** הוסיפי:
+2. **Framework Preset:** Other — **Build Command** ריק, **Output Directory** ריק. (אל תבחרי Express.)
+3. **Settings → Deployment Protection** — כבי הגנה על Production אם האתר דורש התחברות ל-Vercel.
+4. ב-**Settings → Environment Variables** הוסיפי:
    - `RESEND_API_KEY`
    - `CONTACT_TO` = `rl.autologic@gmail.com`
    - `RESEND_FROM` = `Auto Logic <onboarding@resend.dev>`
-4. אחרי `git push`, Vercel יפרס מחדש אוטומטית.
+5. אחרי `git push`, Vercel יפרס מחדש אוטומטית.
 
 אם מופיע `404 DEPLOYMENT_NOT_FOUND` — היכנסי ל-Vercel → הפרויקט → **Deployments** → **Redeploy** (או המתיני לפריסה אחרי push).
 
@@ -60,7 +61,7 @@ python -m http.server 8080
 | `index.html` | מבנה ותוכן |
 | `css/styles.css` | עיצוב, RTL |
 | `js/main.js` | תפריט, טופס → `POST /api/contact` |
-| `server.js` | שרת מקומי (`npm start`) |
+| `scripts/dev-server.js` | שרת מקומי (`npm start`) |
 | `api/contact.js` | API לטופס ב-Vercel |
 | `vercel.json` | הגדרות פריסה ב-Vercel |
 | `.env` | מפתח וכתובות (לא לשתף / לא לעלות לגיט) |

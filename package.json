@@ -3,8 +3,8 @@
   "private": true,
   "description": "אתר Auto Logic + שרת שליחת טופס דרך Resend",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node scripts/dev-server.js",
+    "dev": "node scripts/dev-server.js"
   },
   "engines": {
     "node": ">=18"

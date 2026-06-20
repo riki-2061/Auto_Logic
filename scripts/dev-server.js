@@ -1,15 +1,15 @@
 /**
- * שרת מקומי לפיתוח — npm start → http://localhost:3000
- * ב-Vercel האתר הסטטי + api/contact.js רצים ישירות (ראו vercel.json).
+ * שרת מקומי בלבד — npm start → http://localhost:3000
+ * לא בשורש הפרויקט, כדי ש-Vercel לא יזהה Express ויחסום את index.html.
  */
-require("dotenv").config();
+require("dotenv").config({ path: require("path").join(__dirname, "..", ".env") });
 const express = require("express");
 const path = require("path");
-const { sendContactEmail } = require("./lib/contact");
+const { sendContactEmail } = require("../lib/contact");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const ROOT = __dirname;
+const ROOT = path.join(__dirname, "..");
 
 app.use(express.json({ limit: "48kb" }));
 
