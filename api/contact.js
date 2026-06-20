@@ -13,6 +13,15 @@ module.exports = async (req, res) => {
     return res.status(405).json({ ok: false, error: "Method not allowed" });
   }
 
-  const result = await sendContactEmail(req.body);
+  var body = req.body;
+  if (typeof body === "string") {
+    try {
+      body = JSON.parse(body);
+    } catch (e) {
+      body = {};
+    }
+  }
+
+  const result = await sendContactEmail(body);
   return res.status(result.status).json({ ok: result.ok, error: result.error });
 };
