@@ -35,7 +35,19 @@ npm start
 python -m http.server 8080
 ```
 
-במצב כזה **טופס צור קשר לא ישלח** ל־Resend (אין שרת). לפרודקשן צריך אחסון שמריץ את `server.js` או **Serverless** (Vercel / Netlify Function) עם אותו לוגיקה — המפתח רק ב־Environment Variables של האחסון.
+במצב כזה **טופס צור קשר לא ישלח** ל־Resend (אין שרת).
+
+## פריסה ב-Vercel
+
+1. חברי את הריפו [riki-2061/Auto_Logic](https://github.com/riki-2061/Auto_Logic) ב-Vercel.
+2. **Framework Preset:** Other — **Build Command** ריק, **Output Directory** ריק.
+3. ב-**Settings → Environment Variables** הוסיפי:
+   - `RESEND_API_KEY`
+   - `CONTACT_TO` = `rl.autologic@gmail.com`
+   - `RESEND_FROM` = `Auto Logic <onboarding@resend.dev>`
+4. אחרי `git push`, Vercel יפרס מחדש אוטומטית.
+
+אם מופיע `404 DEPLOYMENT_NOT_FOUND` — היכנסי ל-Vercel → הפרויקט → **Deployments** → **Redeploy** (או המתיני לפריסה אחרי push).
 
 ## עדכון פרטי קשר באתר
 
@@ -48,7 +60,9 @@ python -m http.server 8080
 | `index.html` | מבנה ותוכן |
 | `css/styles.css` | עיצוב, RTL |
 | `js/main.js` | תפריט, טופס → `POST /api/contact` |
-| `server.js` | שרת סטטי + שליחה ל־Resend |
+| `server.js` | שרת מקומי (`npm start`) |
+| `api/contact.js` | API לטופס ב-Vercel |
+| `vercel.json` | הגדרות פריסה ב-Vercel |
 | `.env` | מפתח וכתובות (לא לשתף / לא לעלות לגיט) |
 | `.env.example` | דוגמה לשדות ב־`.env` |
 | `assets/logo.png` | לוגו |
