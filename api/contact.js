@@ -1,6 +1,6 @@
 const { sendContactEmail } = require("../lib/contact");
 
-module.exports = async (req, res) => {
+async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -21,7 +21,13 @@ module.exports = async (req, res) => {
       body = {};
     }
   }
+  if (!body || typeof body !== "object") {
+    body = {};
+  }
 
   const result = await sendContactEmail(body);
   return res.status(result.status).json({ ok: result.ok, error: result.error });
-};
+}
+
+handler.config = { runtime: "nodejs18.x" };
+module.exports = handler;
