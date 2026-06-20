@@ -1067,6 +1067,18 @@ a:hover {
   text-decoration: none;
 }
 
+/* נגישות — מעל WhatsApp, אותו גודל, רווח 5px */
+.kra-a11y-widget {
+  left: 0.8rem !important;
+  right: auto !important;
+  bottom: calc(1.25rem + 56px + 5px) !important;
+}
+
+.kra-a11y-widget .kra-a11y-toggle {
+  width: 68px;
+  height: 68px;
+}
+
 /* Reveal on scroll */
 .reveal {
   opacity: 0;
